@@ -232,7 +232,6 @@ export default function Home() {
                 <li onClick={() => navigate("/about")}>About Us</li>
                 <li onClick={() => navigate("/contact")}>Contact</li>
                 <li onClick={() => navigate("/privacy")}>Privacy Policy</li>
-                <li onClick={() => navigate("/admin/login")} style={{ color: '#999', fontSize: '0.9em', marginTop: '8px' }}>Admin Portal</li>
               </ul>
             </div>
           </div>

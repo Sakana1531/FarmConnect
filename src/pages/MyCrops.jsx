@@ -1,23 +1,32 @@
 // src/pages/MyCrops.jsx
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/dashboard.css";
 
 const MyCrops = () => {
   const [crops, setCrops] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedCrops = JSON.parse(localStorage.getItem("farmerCrops")) || [];
     setCrops(savedCrops);
   }, []);
 
-  const handleDelete = (index) => {
+  const handleDelete = (e, index) => {
+    e.stopPropagation(); // Prevent navigation when deleting
     const updated = crops.filter((_, i) => i !== index);
     setCrops(updated);
     localStorage.setItem("farmerCrops", JSON.stringify(updated));
   };
 
-  const handleEdit = (index) => {
+  const handleEdit = (e, index) => {
+    e.stopPropagation(); // Prevent navigation when editing
     alert(`Edit feature coming soon for ${crops[index].cropName}`);
+  };
+
+  const handleCropClick = (index) => {
+    // Navigate to crop details page with the crop index
+    navigate(`/crop/${index}`, { state: { crop: crops[index], fromMycrops: true } });
   };
 
   return (
@@ -29,7 +38,12 @@ const MyCrops = () => {
       ) : (
         <div className="crops-grid">
           {crops.map((crop, index) => (
-            <div key={index} className="crop-card">
+            <div 
+              key={index} 
+              className="crop-card"
+              onClick={() => handleCropClick(index)}
+              style={{ cursor: 'pointer' }}
+            >
               <img src={crop.image} alt={crop.cropName} className="crop-image" />
               <h3>{crop.cropName}</h3>
               <p>{crop.description}</p>
@@ -40,10 +54,10 @@ const MyCrops = () => {
                 <strong>Quantity:</strong> {crop.quantity} kg
               </p>
               <div className="card-actions">
-                <button className="edit-btn" onClick={() => handleEdit(index)}>
+                <button className="edit-btn" onClick={(e) => handleEdit(e, index)}>
                   Edit
                 </button>
-                <button className="delete-btn" onClick={() => handleDelete(index)}>
+                <button className="delete-btn" onClick={(e) => handleDelete(e, index)}>
                   Delete
                 </button>
               </div>
