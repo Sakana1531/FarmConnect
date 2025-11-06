@@ -391,21 +391,24 @@
 
 /* =============== FOOTER =============== */
 footer {
-  background-color: #1a2332;
-  color: white;
-  padding: 3rem 6rem;
+  background-color: #1a2332 !important;
+  color: white !important;
+  padding: 4rem 8% !important;
+  width: 100% !important;
 }
 
 .footer-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 8rem;
-  width: 100%;
-  align-items: start;
+  display: grid !important;
+  grid-template-columns: 2fr 3fr !important;
+  gap: 8rem !important;
+  width: 100% !important;
+  align-items: start !important;
+  max-width: none !important;
+  margin: 0 !important;
 }
 
 .footer-brand {
-  max-width: 350px;
+  max-width: 400px;
 }
 
 .footer-brand h3 {
@@ -420,6 +423,18 @@ footer {
   font-size: 0.95rem;
   line-height: 1.7;
   color: #b0b8c4;
+}
+
+.footer-links {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 4rem !important;
+  width: 100% !important;
+}
+
+.footer-links > div {
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-links h4 {

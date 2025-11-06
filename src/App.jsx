@@ -13,6 +13,8 @@ import MyCrops from "./pages/MyCrops";
 import AvailableCrops from "./pages/AvailableCrops";
 import CropDetails from "./pages/CropDetails";
 import Cart from "./pages/Cart";
+import AdminLogin from './pages/Admin/AdminLogin';
+import AdminDashboard from './pages/Admin/AdminDashboard';
 
 function App() {
   return (
@@ -34,10 +36,14 @@ function App() {
         {/* Consumer Routes */}
         <Route path="/consumer-dashboard" element={<ConsumerDashboard />} />
         <Route path="/available-crops" element={<AvailableCrops />} />
-        <Route path="/crop/:id" element={<CropDetails />} /> {/* ✅ Fixed dynamic route */}
+        <Route path="/crop/:id" element={<CropDetails />} />
         <Route path="/cart" element={<Cart />} />
 
-        {/* Fallback route (optional but recommended) */}
+        {/* Admin Routes */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
+        {/* Fallback route */}
         <Route path="*" element={<h2 style={{ textAlign: "center" }}>404 - Page Not Found</h2>} />
       </Routes>
     </Router>
